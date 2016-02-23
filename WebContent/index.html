@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('input').click(function(){
+			$.get('demoAction.action');
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="button" value="请 求" />
+</body>
+</html>
