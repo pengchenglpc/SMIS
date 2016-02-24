@@ -16,12 +16,12 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	private Class<T> clazz;
+	//private Class<T> clazz;
 	
-	public BaseDaoImpl(){
+	public Class getClazz(){
 		Type genType = getClass().getGenericSuperclass();  
         Type[] params = ((ParameterizedType) genType).getActualTypeArguments();  
-        clazz = (Class) params[0];
+        return (Class) params[0];
 	}
 	@Override
 	public Serializable save(T entity) {
@@ -41,7 +41,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Override
 	public T get(Serializable id) {
 		@SuppressWarnings("unchecked")
-		T entity = (T)sessionFactory.getCurrentSession().get(clazz, id);
+		T entity = (T)sessionFactory.getCurrentSession().get(this.getClazz(), id);
 		return entity;
 	}
 
