@@ -2,50 +2,30 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Accordion Actions - jQuery EasyUI Demo</title>
+	<title>企业管理与财务一体化软件</title>
 	<link rel="stylesheet" type="text/css" href="css/easyui/easyui.css">
-	<link rel="stylesheet" type="text/css" href="css/easyui//icon.css">
-	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<link rel="stylesheet" type="text/css" href="css/easyui/icon.css">
 	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/common/jquery.extend.ajax.js"></script>
 </head>
-<body>
-	<h2>Accordion Actions</h2>
-	<p>Click the buttons below to add or remove accordion items.</p>
-	<div style="margin:20px 0 10px 0;">
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="selectPanel()">Select</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="addPanel()">Add</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="removePanel()">Remove</a>
-	</div>
-	<div id="aa" class="easyui-accordion" style="width:500px;height:300px;">
-		<div title="About" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
-			<h3 style="color:#0099FF;">Accordion for jQuery</h3>
-			<p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:66px;background: url('images/common/top.jpg');"></div>
+	<div data-options="region:'west',split:true,title:'导航菜单'" style="width:250px;">
+		<div id="nav_accordion" class="easyui-accordion" data-options="fit:true,border:false">
+			 <div title="系统管理" data-options="iconCls:'icon-save'" style="overflow:auto;">   
+		        <ul id="sys_tree" class="easyui-tree"></ul>   
+		    </div>   
 		</div>
 	</div>
-	<script type="text/javascript">
-		function selectPanel(){
-			$.messager.prompt('Prompt','Please enter the panel title:',function(s){
-				if (s){
-					$('#aa').accordion('select',s);
-				}
-			});
-		}
-		var idx = 1;
-		function addPanel(){
-			$('#aa').accordion('add',{
-				title:'Title'+idx,
-				content:'<div style="padding:10px">Content'+idx+'</div>'
-			});
-			idx++;
-		}
-		function removePanel(){
-			var pp = $('#aa').accordion('getSelected');
-			if (pp){
-				var index = $('#aa').accordion('getPanelIndex',pp);
-				$('#aa').accordion('remove',index);
-			}
-		}
-	</script>
+	<div data-options="region:'south',border:true" style="height:30px;">
+	</div>
+	<div data-options="region:'center'">
+		<div class="easyui-tabs" id="center_tab" data-options="fit:true,border:false">
+			<div title="首页" style="padding:10px">
+			</div>
+		</div>
+	</div>
 </body>
+<script type="text/javascript" src="js/index.js"></script>
 </html>
