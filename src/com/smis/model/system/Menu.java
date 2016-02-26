@@ -1,0 +1,63 @@
+package com.smis.model.system;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="T_MENU", schema="smis")
+public class Menu {
+	//菜单ID
+	private String id;
+	//菜单名称
+	private String menuName;
+	//菜单路径
+	private String menuUrl;
+	//菜单图标
+	private String menuIcon;
+	//父菜单ID
+	private String menuParent;
+	
+	@Id
+	@Column(name="ID", unique = true, nullable = false, length = 32 )
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	@Column(name="MENU_NAME", nullable = false, length = 100)
+	public String getMenuName() {
+		return menuName;
+	}
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+	
+	@Column(name="MENU_URL", nullable = false, length=200)
+	public String getMenuUrl() {
+		return menuUrl;
+	}
+	public void setMenuUrl(String menuUrl) {
+		this.menuUrl = menuUrl;
+	}
+	
+	@Column(name="MENU_ICON", nullable=true, length=200)
+	public String getMenuIcon() {
+		return menuIcon;
+	}
+	public void setMenuIcon(String menuIcon) {
+		this.menuIcon = menuIcon;
+	}
+	
+	@Column(name="PARENT_ID", nullable=true, length=32)
+	public String getMenuParent() {
+		return menuParent;
+	}
+	public void setMenuParent(String menuParent) {
+		this.menuParent = menuParent;
+	}
+	
+}
