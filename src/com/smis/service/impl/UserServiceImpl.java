@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smis.dao.IUserDao;
+import com.smis.dao.user.IUserDao;
 import com.smis.model.User;
 import com.smis.service.IUserService;
 
@@ -18,6 +18,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public Serializable save(User user) {
 		return userDao.save(user);
+	}
+
+	@Override
+	public User get(String userId) {
+		return userDao.get(userId);
 	}
 
 }

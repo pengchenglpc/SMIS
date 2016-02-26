@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.smis.model.User;
 
 public interface IUserService {
-	Serializable save(User user); 
+	Serializable save(User user);
+	User get(String userId);
 
 }

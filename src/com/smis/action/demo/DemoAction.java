@@ -12,12 +12,18 @@ import com.smis.service.IUserService;
 public class DemoAction {
 	@Autowired
 	private IUserService userService;
-	public String demo(){
+	public String add(){
 		User user = new User();
 		user.setId("test1");
-		user.setName("test1");
+		user.setName("这是一个测试");
 		user.setPassword("test1");
 		Serializable a = this.userService.save(user);
 		return null;
 	}
+	public String get(){
+		User user = userService.get("test1");
+		System.out.println(user.getName());
+		return null;
+	}
+	
 }
