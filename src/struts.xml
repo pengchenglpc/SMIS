@@ -8,20 +8,9 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="false" />
 
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="sysManage" namespace="/sys" extends="struts-default">
 
-        <default-action-ref name="index" />
-
-        <global-results>
-            <result name="error">/WEB-INF/jsp/error.jsp</result>
-        </global-results>
-
-       <!--   <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error"/>
-        </global-exception-mappings>
-        -->
-
-        <action name="*Action" class="demoAction" method="{1}"></action>
+        <action name="*Menu" class="com.smis.action.system.MenuAction" method="{1}"></action>
     </package>
 	<!--
     <include file="example.xml"/>

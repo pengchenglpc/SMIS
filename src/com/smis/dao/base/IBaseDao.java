@@ -2,6 +2,7 @@ package com.smis.dao.base;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import com.smis.model.common.Page;
 
@@ -47,5 +48,12 @@ public interface IBaseDao<T> {
 	 * @return
 	 */
 	public Page<T> findPageQuery(String querySQL, Integer page, Integer pageSize);
+	
+	public List<T> findQuery(String querySQL, Map<String, Object> param);
+	
+	public Page<T> findPageQuery(String querySQL, Map<String, Object> param, Integer page, Integer pageSize);
+	public Integer getTotalCount(String querySQL, Map<String, Object> param);
+	public List<T> findAll();
+	public Page<T> findAll(Integer page, Integer pageSize);
 	
 }

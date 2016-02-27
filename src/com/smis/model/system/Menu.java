@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="T_MENU", schema="smis")
@@ -18,6 +19,16 @@ public class Menu {
 	private String menuIcon;
 	//父菜单ID
 	private String menuParent;
+	//菜单描述
+	private String description;
+	//创建人
+	private String creator;
+	//修改人
+	private String mender;
+	//创建时间
+	private String createTime;
+	//修改时间
+	private String updateTime;
 	
 	@Id
 	@Column(name="ID", unique = true, nullable = false, length = 32 )
@@ -36,7 +47,7 @@ public class Menu {
 		this.menuName = menuName;
 	}
 	
-	@Column(name="MENU_URL", nullable = false, length=200)
+	@Column(name="MENU_URL", nullable = true, length=200)
 	public String getMenuUrl() {
 		return menuUrl;
 	}
@@ -59,5 +70,52 @@ public class Menu {
 	public void setMenuParent(String menuParent) {
 		this.menuParent = menuParent;
 	}
+	@Transient
+	public String get_parentId() {
+		return this.menuParent;
+	}
+	@Transient
+	public String getText(){
+		return this.menuName;
+	}
 	
+	@Column(name="DESCRIPTION", nullable=true, length=1000)
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	@Column(name="CREATOR", nullable = false, length=32)
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+	@Column(name="MENDER", nullable = false, length=32)
+	public String getMender() {
+		return mender;
+	}
+	public void setMender(String mender) {
+		this.mender = mender;
+	}
+	
+	@Column(name="CREATE_TIME", nullable=false, length=50)
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	
+	@Column(name="UPDATE_TIME", nullable=false, length=50)
+	public String getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
 }

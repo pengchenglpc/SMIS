@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -67,6 +70,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		pages.setPage(page);
 		pages.setPageSize(pageSize);
 		pages.setRows(query.list());
+		pages.setTotal(getCount(querySQL));
 		return pages;
 	}
 	
@@ -77,6 +81,69 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 			querySQL = querySQL.substring(index);
 		}
 		queryCountQuery += querySQL;
-		return 0;
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(queryCountQuery);
+		return (Integer)query.uniqueResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findQuery(String querySQL, Map<String, Object> param) {
+		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
+		for(String key : param.keySet()){
+			query.setParameter(key, param.get(key));
+		}
+		return query.list();
+	}
+	@Override
+	public Page<T> findPageQuery(String querySQL, Map<String, Object> param, Integer page, Integer pageSize) {
+		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
+		for(String key : param.keySet()){
+			query.setParameter(key, param.get(key));
+		}
+		query.setFirstResult((page - 1) * pageSize);
+		query.setMaxResults(pageSize);
+		
+		Page<T> pager = new Page<T>();
+		pager.setRows(query.list());
+		pager.setPage(page);
+		pager.setPageSize(pageSize);
+		return pager;
+	}
+	
+	@Override
+	public Integer getTotalCount(String querySQL, Map<String, Object> param) {
+		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
+		for(String key : param.keySet()){
+			query.setParameter(key, param.get(key));
+		}
+		Integer total = (Integer)query.list().get(0);
+		return total;
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<T> findAll() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(this.getClazz());
+		return criteria.list();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public Page<T> findAll(Integer page, Integer pageSize) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(this.getClazz());
+		Integer rowCount = (Integer) criteria.setProjection(
+				Projections.rowCount()).uniqueResult();
+		
+		criteria.setFirstResult((page - 1) * pageSize);
+		criteria.setMaxResults(pageSize);
+		
+		Page<T> pager = new Page<T>();
+		pager.setTotal(rowCount);
+		pager.setPage(page);
+		pager.setPageSize(pageSize);
+		pager.setRows(criteria.list());
+		
+		return pager;
 	}
 }
