@@ -1,0 +1,22 @@
+(function($){
+	$(function(){
+		$.fn.zTree.init($("#menu_manage_tree"), {
+			async:{
+				enable:true,
+				url:'sys/findAllMenu.action',
+				data:{
+					key:{
+						//enable:true,
+						name:'menuName'
+					},
+					simpleData:{
+						enable:true,
+						idKey:'id',
+						pIdKey:'menuParent',
+						rootPId:''
+					}
+				}
+			}
+		});
+	});
+})(jQuery);

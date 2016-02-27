@@ -19,7 +19,7 @@
     <context:property-placeholder location="/WEB-INF/db.properties" />
 	<context:annotation-config />
     <!-- 自动扫描dao和service包(自动注入) -->
-    <context:component-scan base-package="com.smis.action,com.smis.service,com.smis.dao" />
+    <context:component-scan base-package="com.smis.action..*,com.smis.service..*,com.smis.dao..*" />
 	
 	 <!-- 配置数据源 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
