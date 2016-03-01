@@ -29,6 +29,8 @@ public class Menu {
 	private String createTime;
 	//修改时间
 	private String updateTime;
+	//是否可用  0为不可用，1为可用
+	private Integer available;
 	
 	@Id
 	@Column(name="ID", unique = true, nullable = false, length = 32 )
@@ -71,7 +73,11 @@ public class Menu {
 		this.menuParent = menuParent;
 	}
 	@Transient
-	public String get_parentId() {
+	public String getParent(){
+		return this.menuParent;
+	}
+	@Transient
+	public String get_parentId(){
 		return this.menuParent;
 	}
 	@Transient
@@ -118,4 +124,13 @@ public class Menu {
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
+	
+	@Column(name="AVAILABLE", nullable=false)
+	public Integer getAvailable() {
+		return available;
+	}
+	public void setAvailable(Integer available) {
+		this.available = available;
+	}
+	
 }

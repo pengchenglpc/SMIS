@@ -38,4 +38,16 @@ public class MenuAction extends BaseAction {
 		outJSON(JSONArray.fromObject(this.menuService.findAll()));
 		//return JSONArray.fromObject(this.menuService.findAll()).toString();
 	}
+	public void findParam() throws IOException{
+		outJSON(JSONArray.fromObject(this.menuService.findMenu(menu)));
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	
 }

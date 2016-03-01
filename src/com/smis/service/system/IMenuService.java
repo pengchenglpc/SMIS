@@ -18,4 +18,11 @@ public interface IMenuService {
 	 * @return
 	 */
 	public List<Menu> findAll();
+	
+	/**
+	 * 根据条件查询菜单
+	 * @param menu
+	 * @return
+	 */
+	public List<Menu> findMenu(Menu menu);
 }

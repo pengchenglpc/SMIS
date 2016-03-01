@@ -34,4 +34,9 @@ public class MenuServiceImpl implements IMenuService {
 		return list;
 	}
 
+	@Override
+	public List<Menu> findMenu(Menu menu) {
+		return menuDao.findMenu(menu);
+	}
+
 }
