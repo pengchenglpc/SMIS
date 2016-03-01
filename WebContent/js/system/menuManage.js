@@ -3,18 +3,24 @@
 		$.fn.zTree.init($("#menu_manage_tree"), {
 			async:{
 				enable:true,
-				url:'sys/findAllMenu.action',
-				data:{
-					key:{
-						//enable:true,
-						name:'menuName'
-					},
-					simpleData:{
-						enable:true,
-						idKey:'id',
-						pIdKey:'menuParent',
-						rootPId:''
-					}
+				url:'sys/findAllMenu.action'
+			},
+			data:{
+				key:{
+					name:'menuName'
+				},
+				simpleData:{
+					enable:true,
+					idKey:'id',
+					pIdKey:'menuParent',
+					rootPId:''
+				}
+			},
+			callback:{
+				onClick:function(){
+					$('#menuListPanel').panel({
+						href:'system/menuList.html'
+					});
 				}
 			}
 		});

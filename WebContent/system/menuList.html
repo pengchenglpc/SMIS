@@ -1,0 +1,28 @@
+<script type="text/javascript" src="js/system/menuList.js"></script>
+<div class="easyui-layout" data-options="fit:true,border:false">   
+    <div data-options="region:'north',title:'查询',collapsible:false,border:false" style="height:130px;">
+    	<form id="custom_search_form">
+	    	<div style="padding:10px;">
+	    		<div style="float:left;width:350px;">
+	    			<label>属性名称：</label>
+	    			<input type="text" name="attrName" class="easyui-textbox"/>
+	    		</div>
+	    		<div style="margin-left:15px;float:left;width:350px;">
+	    			<label>属性描述：</label>
+	    			<input type="text" name="attrText" class="easyui-textbox"/>
+	    		</div>
+	    		<div style="margin-left:15px;float:left;width:350px;">
+	    			<label>是否有效：</label>
+	    			<input type="text" name="isActive" id="attr_is_active"/>
+	    		</div>
+	    	</div>
+    	</form>
+    	<div style="clear:left;float:right;margin-right:10px;">
+    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchCustom()">查询</a>
+    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-clear'" onclick="clearSearchCustom()">清空</a>
+    	</div>
+    </div>   
+    <div data-options="region:'center',title:'数据列表'" style="padding:5px;background:#eee;">
+    	<div id="menu_datagrid"></div>
+    </div>   
+</div>  
