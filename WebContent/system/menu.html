@@ -1,10 +1,61 @@
-<form>
-	<div>   
-        <label for="name">Name:</label>   
-        <input class="easyui-textbox easyui-validatebox" type="text" name="name" data-options="required:true" />   
-    </div>   
-    <div>   
-        <label for="email">Email:</label>   
-        <input class="easyui-textbox easyui-validatebox" type="text" name="email" data-options="validType:'email'" />   
-    </div>   
+<style>
+.menu-table{
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+    
+}
+.menu-table td{
+    border: solid #C0C0C0 1px;
+    padding:5px;
+}
+.menu-table .menu-label-td{
+	background: #F1F6FF;
+}
+
+</style>
+<form id="menu_form" style="padding:5px;">
+	<table class="menu-table">
+		
+		<tr>
+			<td class="menu-label-td">菜单名称：<input type="hidden" name="menu.id"></td>
+			<td><input type="text" class="easyui-textbox easyui-validatebox" name="menu.menuName" data-options="required:true"/></td>
+			<td class="menu-label-td">父菜单：</td>
+			<td><label name="menu.parent"></label><input type="hidden" name="menu.menuParent" /></td>
+		</tr>
+		<tr>
+			<td class="menu-label-td">菜单路径：</td>
+			<td><input type="text" class="easyui-textbox" name="menu.menuUrl"/></td>
+			<!--  <td class="menu-label-td">菜单图标：</td>
+			<td><input type="text" class="easyui-textbox"/></td>
+		</tr>
+		<tr>
+			<td class="menu-label-td">排序值：</td>
+			<td><input type="text" required="required" data-options="min:1,editable:true" value="1" class="easyui-numberspinner easyui-validatebox"/></td>-->
+			<td class="menu-label-td">是否可用：</td>
+			<td>
+				<span class="radioSpan">
+					<input type="radio" name="menu.available" value="0">否
+	                <input type="radio" name="menu.available" checked="checked" value="1">是
+                </span>
+            </td>
+		</tr>
+		<tr>
+			<td class="menu-label-td">排序值：</td>
+			<td><input type="text" required="required" name="menu.sort" data-options="min:1,editable:true" value="1" class="easyui-numberspinner easyui-validatebox"/></td>
+			<td class="menu-label-td">是否有子节点：</td>
+			<td>
+				<span class="radioSpan">
+					<input type="radio" name="menu.leaf"  value="0">否
+	                <input type="radio" name="menu.leaf" checked="checked" value="1">是
+                </span>
+            </td>
+		</tr>
+		<tr>
+			<td class="menu-label-td">菜单描述：</td>
+			<td colspan="3">
+				<textarea rows="3" name="menu.description" cols="65"></textarea>
+			</td>
+		</tr>
+	</table>
 </form>
