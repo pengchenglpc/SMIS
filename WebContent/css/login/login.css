@@ -1,0 +1,119 @@
+	.login-wrap{
+		width:500px;
+		/*border:1px solid red;*/
+		margin:auto;
+		border-radius: 9px;
+	}
+	.login-wrap div{
+		text-align:center;
+	}
+	.login-title{
+		background: -moz-linear-gradient(top, #FF6905 0%, #FFF2E9 100%);
+	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF6905), color-stop(100%,#FFF2E9));
+	    background: -webkit-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: -o-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: -ms-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: linear-gradient(to left, #FF6905 0%,#FFF2E9 100%);
+	    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF6905', endColorstr='#FFF2E9',GradientType=1 );
+		line-height: 140px;
+		height:140px;
+		border-radius: 9px 9px 0px 0px;
+	}
+	.login-title h1{
+		text-transform: uppercase;
+		font-size: 35px;
+		margin: 0; 
+		padding:0;
+		 -webkit-text-stroke: 0px black;
+		 color: #990000;
+		 font-family: 微软雅黑;
+		 text-shadow: 2px 2px 0 #D8DCDD, 3px 3px 0 #D8DCDD, 1px -1px 0 #D8DCDD, -1px 1px 0 #D8DCDD, 1px 1px 0 #D8DCDD;
+	}
+	.login-content{
+		height:160px;
+		line-height: 130px;
+	}
+	.login-content div{
+		height:30px;
+		padding: 5px;
+	}
+	.login-content input{
+		border: 1px solid #FFB98B;
+		border-radius: 6px;
+		height: 25px;
+		outline: navajowhite;
+		width: 185px;
+	}
+	.login-bottom{
+		background: -moz-linear-gradient(top, #FF6905 0%, #FFF2E9 100%);
+	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF6905), color-stop(100%,#FFF2E9));
+	    background: -webkit-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: -o-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: -ms-linear-gradient(top, #FF6905 0%,#FFF2E9 100%);
+	    background: linear-gradient(to top, #B38946 0%,#fff 100%);
+	    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B38946', endColorstr='#fff',GradientType=1 );
+	    height:40px;
+	    border-radius: 0px 0px 9px 9px;
+	}
+	.login-img{
+		  width: 128px !important;
+		  height: 128px !important;
+		  background: url('../../images/login/Group2.png') no-repeat;
+		  float: left;
+		  position: relative;
+		  top: 30px;
+		  left: 32px;
+	}
+	.login-btn{
+		height:50px;
+	}
+	.big {  
+	    height: 34px;
+  		width: 72px;
+	    text-transform: uppercase;  
+	    font: bold 20px/22px Arial, sans-serif;  
+	}  
+	.button {  
+	    display: inline-block;  
+	    position: relative; 
+	    margin: -10px 10px;
+	    padding: 0 20px;
+	    padding-top: 10px;  
+	    text-align: center;  
+	    text-decoration: none;  
+	    font: bold 12px/25px Arial, sans-serif;  
+	  	left: 75px;
+	    text-shadow: 1px 1px 1px rgba(255,255,255, .22);  
+	  
+	    -webkit-border-radius: 30px;  
+	    -moz-border-radius: 30px;  
+	    border-radius: 30px;  
+	  
+	    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);  
+	    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);  
+	    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);  
+	  
+	    -webkit-transition: all 0.15s ease;  
+	    -moz-transition: all 0.15s ease;  
+	    -o-transition: all 0.15s ease;  
+	    -ms-transition: all 0.15s ease;  
+	    transition: all 0.15s ease;  
+	}  
+	.blue {  
+	    color: white; 
+	    background: #FFB17D; /* Old browsers */  
+	    background: -moz-linear-gradient(top,  #FFB17D 0%, #FF7417 100%); /* FF3.6+ */  
+	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFB17D), color-stop(100%,#FF7417)); /* Chrome,Safari4+ */  
+	    background:-webkit-linear-gradient(top, #FFB17D 0%,#FF7417 100%); /* Chrome10+,Safari5.1+ */  
+	    background: -o-linear-gradient(top,  #FFB17D 0%,#FF7417 100%); /* Opera 11.10+ */  
+	    background: -ms-linear-gradient(top,  #FFB17D 0%,#FF7417 100%); /* IE10+ */  
+	    background: linear-gradient(top,  #FFB17D 0%,#FF7417 100%); /* W3C */  
+}  
+.login-tip{
+	position: relative;
+  	top: 23px;
+  	color:red;
+  	height: 25px;
+  	line-height: 25px;
+}
+  
