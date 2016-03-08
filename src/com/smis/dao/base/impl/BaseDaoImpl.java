@@ -10,6 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,7 +37,9 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 
 	@Override
 	public void update(T entity) {
-		sessionFactory.getCurrentSession().update(entity);
+		Session session = sessionFactory.getCurrentSession();
+		session.clear();
+		session.update(entity);
 	}
 
 	@Override
@@ -125,6 +128,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(this.getClazz());
+		criteria.addOrder(Order.desc("sort"));
 		return criteria.list();
 	}
 	

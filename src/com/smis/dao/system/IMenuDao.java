@@ -7,4 +7,6 @@ import com.smis.model.system.Menu;
 
 public interface IMenuDao extends IBaseDao<Menu> {
 	public List<Menu> findMenu(Menu menu);
+	
+	public List<Menu> findRootMenu();
 }

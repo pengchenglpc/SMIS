@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="T_MENU", schema="smis")
+@Table(name="T_MENU", schema="grxplusdata")
 public class Menu {
 	//菜单ID
 	private String id;
@@ -31,6 +31,10 @@ public class Menu {
 	private String updateTime;
 	//是否可用  0为不可用，1为可用
 	private Integer available;
+	//排序
+	private Integer sort;
+	//是否为面子菜单 0为叶子菜单，1为非叶子菜单
+	private Integer leaf;
 	
 	@Id
 	@Column(name="ID", unique = true, nullable = false, length = 32 )
@@ -131,6 +135,20 @@ public class Menu {
 	}
 	public void setAvailable(Integer available) {
 		this.available = available;
+	}
+	@Column(name="SORT", nullable=false)
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	@Column(name="LEAF", nullable=false)
+	public Integer getLeaf() {
+		return leaf;
+	}
+	public void setLeaf(Integer leaf) {
+		this.leaf = leaf;
 	}
 	
 }

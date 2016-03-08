@@ -2,6 +2,7 @@ package com.smis.service.system;
 
 import java.util.List;
 
+import com.smis.model.common.Page;
 import com.smis.model.system.Menu;
 
 public interface IMenuService {
@@ -24,5 +25,22 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> findMenu(Menu menu);
+	public Page<Menu> findMenu(Menu menu);
+	
+	/**
+	 * 删除菜单项
+	 * @param menu
+	 */
+	public void removeMenu(Menu menu);
+	
+	/**
+	 * 修改菜单项
+	 * @param menu
+	 */
+	public void editMenu(Menu menu);
+	
+	public List<Menu> findRootMenu();
+	
+	public List<Menu> findParentMenu(String parentId);
+	
 }

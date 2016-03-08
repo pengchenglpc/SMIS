@@ -32,7 +32,16 @@ public class MenuDaoImpl extends BaseDaoImpl<Menu>implements IMenuDao {
 			query.append(" and menuName like '%:menuName%'");
 			queryParam.put("menuName", menu.getMenuName());
 		}
+		
+		query.append(" order by sort desc");
 		return this.findQuery(query.toString(), queryParam);
+	}
+
+	@Override
+	public List<Menu> findRootMenu() {
+		StringBuilder query = new StringBuilder();
+		query.append("from Menu where menuParent is null or menuParent='' order by sort desc");
+		return this.findQuery(query.toString());
 	}
 	
 }
