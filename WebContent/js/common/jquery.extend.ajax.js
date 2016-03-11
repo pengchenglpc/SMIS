@@ -27,7 +27,7 @@
         var _opt = $.extend(opt,{  
             error:function(XMLHttpRequest, textStatus, errorThrown){  
                 //错误方法增强处理
-            	var session_status = XMLHttpRequest.getResponseHeader('sessionstatus');
+            	var session_status = XMLHttpRequest.getResponseHeader('session_status');
             	if(session_status && session_status === 'timeout'){
             		fn.overtime.call(this);
             	}else{
@@ -36,7 +36,7 @@
             },  
             success:function(data, textStatus, xhr){  
                 //成功回调方法增强处理  
-                var session_status = xhr.getResponseHeader('sessionstatus');
+                var session_status = xhr.getResponseHeader('session_status');
                 if(session_status && session_status === 'timeout'){
                 	fn.overtime.call(this);
                 }else{

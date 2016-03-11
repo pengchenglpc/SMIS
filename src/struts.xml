@@ -10,8 +10,11 @@
     <constant name="struts.devMode" value="false" />
 
     <package name="sysManage" namespace="/sys" extends="struts-default">
-
         <action name="*Menu" class="com.smis.action.system.MenuAction" method="{1}"></action>
+        <action name="*User" class="com.smis.action.user.UserAction" method="{1}"></action>
+    </package>
+    <package name="production" namespace="/production" extends="struts-default">
+    	<action name="*Production" class="com.smis.action.production.ProcedureAction" method="{1}"></action>
     </package>
 	<!--
     <include file="example.xml"/>

@@ -55,5 +55,6 @@ public interface IBaseDao<T> {
 	public Integer getTotalCount(String querySQL, Map<String, Object> param);
 	public List<T> findAll();
 	public Page<T> findAll(Integer page, Integer pageSize);
+	public List findQueryNoCast(String querySQL, Map<String, Object> param);
 	
 }

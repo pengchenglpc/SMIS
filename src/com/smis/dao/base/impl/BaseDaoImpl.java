@@ -150,4 +150,12 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		
 		return pager;
 	}
+	@Override
+	public List findQueryNoCast(String querySQL, Map<String, Object> param) {
+		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
+		for(String key : param.keySet()){
+			query.setParameter(key, param.get(key));
+		}
+		return query.list();
+	}
 }
