@@ -7,17 +7,26 @@
 	    	<div style="padding:10px;">
 	    		<div style="float:left;width:350px;">
 	    			<label>生产单：</label>
-	    			<input type="text" name="attrName" class="easyui-textbox"/>
+	    			<input id="produceNo" type="text" class="easyui-combobox" data-options="    
+														        valueField: 'name',    
+														        textField: 'name',
+														        filter: function(q, row){
+																	var opts = $(this).combobox('options');
+																	return row[opts.textField].indexOf(q) == 0;
+																},														        
+														        url: 'production/produceNoProduction.action'"/>
 	    		</div>
 	    		<div style="margin-left:15px;float:left;width:350px;">
 	    			<label>工序：</label>
-	    			<input type="text" name="attrText" class="easyui-textbox"/>
+	    			<input id="working" type="text" class="easyui-combobox" data-options="    
+														        valueField: 'name',    
+														        textField: 'name',    
+														        url: 'production/workingProduction.action'"/>
 	    		</div>
 	    	</div>
     	</form>
     	<div style="clear:left;float:right;margin-right:10px;">
-    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchCustom()">统计</a>
-    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-clear'" onclick="clearSearchCustom()">清空</a>
+    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="analysis()">统计</a>
     	</div>
     </div> 
     <div data-options="region:'center',title:'数据列表'" style="padding:5px;background:#eee;">

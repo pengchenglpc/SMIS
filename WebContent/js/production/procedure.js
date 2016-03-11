@@ -1,10 +1,27 @@
 (function($){
 	$(function(){
+		
+		
+	});
+	window.analysis = function(){
+		var productNo = $('#produceNo').combobox('getValue');
+		var working = $('#working').combobox('getValue');
+		if(!productNo){
+			$.messager.alert("提示", "请选择生产单号");
+			return;
+		}
+		if(!working){
+			$.messager.alert("提示", "请选择工序");
+			return;
+		}
 		var procedureChart = echarts.init(document.getElementById('procedure'));
-		$.get('production/analysisProduction.action', null, function(data){
+		$.get('production/analysisProduction.action', {
+			'plan.comtinueNo':productNo,
+			'plan.working':working
+		}, function(data){
 			procedureChart.setOption({
 				title : {
-			        text: '工序责任统计',
+			        text: working + '责任统计',
 			        //subtext: '纯属虚构',
 			        x:'center'
 			    },
@@ -29,12 +46,11 @@
 			            name: '工序责任统计',
 			            type: 'pie',
 			            radius: '75%',
-			            //center: ['50%', '60%'],
+			            center: ['50%', '60%'],
 			            data:data
 			        }
 			    ]
 			});
 		}, 'json');
-		
-	});
+	}
 })(jQuery);

@@ -128,7 +128,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(this.getClazz());
-		criteria.addOrder(Order.desc("sort"));
+		//criteria.addOrder(Order.desc("sort"));
 		return criteria.list();
 	}
 	
@@ -153,8 +153,10 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Override
 	public List findQueryNoCast(String querySQL, Map<String, Object> param) {
 		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
-		for(String key : param.keySet()){
-			query.setParameter(key, param.get(key));
+		if(param != null){
+			for(String key : param.keySet()){
+				query.setParameter(key, param.get(key));
+			}
 		}
 		return query.list();
 	}

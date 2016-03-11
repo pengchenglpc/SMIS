@@ -18,11 +18,12 @@ public class ProcedureDaoImpl extends BaseDaoImpl<ProducePlanPersonnel> implemen
 		StringBuilder query = new StringBuilder();
 		query.append("SELECT count(sonnel.personnelMemo), sonnel.personnelMemo from ProducePlan plan, ProducePlanPersonnel sonnel where 1=1");
 		query.append(" and plan.productNo=sonnel.productPersonnelNo and sonnel.personnelMemo != ''");
-		query.append(" and plan.comtinueNo=:comtinueNo and plan.working=:working");
+		query.append(" and plan.comtinueNo=:comtinueNo and plan.working=:working and plan.comFlag=:comFlag");
 		query.append(" group by sonnel.personnelMemo");
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("comtinueNo", comtinueNo);
 		param.put("working", working);
+		param.put("comFlag", "已审核");
 		List list = this.findQueryNoCast(query.toString(), param);
 		return list;
 	}
