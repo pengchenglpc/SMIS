@@ -18,5 +18,12 @@ public class ProducePlanDaoImpl extends BaseDaoImpl<ProducePlan> implements IPro
 		return this.findQueryNoCast(query.toString(), null);
 	}
 
+	@Override
+	public List findDept() {
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT distinct department from ProducePlan where comFlag='已审核'");
+		return this.findQueryNoCast(query.toString(), null);
+	}
+
 
 }

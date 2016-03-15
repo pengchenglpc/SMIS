@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.smis.dao.production.IProcedureDao;
 import com.smis.dao.production.IProducePlanDao;
 import com.smis.dao.production.IWorkingDao;
+import com.smis.model.production.ProducePlan;
 import com.smis.model.production.Working;
 import com.smis.service.production.IProcedureService;
 
@@ -27,8 +28,8 @@ public class ProcedureServiceImpl implements IProcedureService {
 	private IProducePlanDao producePlanDao;
 	
 	@Override
-	public List<JSONObject> statisticalAnalysis(String comtinueNo, String working) {
-		List list = procedureDao.statisticalAnalysis(comtinueNo, working);
+	public List<JSONObject> statisticalAnalysis(ProducePlan plan) {
+		List list = procedureDao.statisticalAnalysis(plan);
 		List<JSONObject> arr = new ArrayList<JSONObject>();
 		for(Object obj : list){
 			Object[] _arr = (Object[])obj;
@@ -48,6 +49,17 @@ public class ProcedureServiceImpl implements IProcedureService {
 	@Override
 	public List<JSONObject> findProduceNo() {
 		List list = this.producePlanDao.findProduceNo();
+		List<JSONObject> arr = new ArrayList<JSONObject>();
+		for(Object o : list){
+			JSONObject obj = new JSONObject();
+			obj.put("name", o);
+			arr.add(obj);
+		}
+		return arr;
+	}
+	@Override
+	public List<JSONObject> findDept() {
+		List list = this.producePlanDao.findDept();
 		List<JSONObject> arr = new ArrayList<JSONObject>();
 		for(Object o : list){
 			JSONObject obj = new JSONObject();

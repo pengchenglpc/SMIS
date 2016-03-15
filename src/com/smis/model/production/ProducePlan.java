@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * 生产进度
@@ -41,6 +42,9 @@ public class ProducePlan {
 	private String buhegeNo;
 	private String planName;
 	private BigDecimal rengongAmount;
+	
+	private Date startDate;
+	private Date endDate;
 	
 	@Id
 	@Column(name="ProductNo", nullable=false, length=100)
@@ -230,5 +234,20 @@ public class ProducePlan {
 	public void setRengongAmount(BigDecimal rengongAmount) {
 		this.rengongAmount = rengongAmount;
 	}
+	@Transient
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	@Transient
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	
 	
 }

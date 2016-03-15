@@ -4,24 +4,37 @@
 		
 	});
 	window.analysis = function(){
-		var productNo = $('#produceNo').combobox('getValue');
-		var working = $('#working').combobox('getValue');
-		if(!productNo){
-			$.messager.alert("提示", "请选择生产单号");
+		var productNo = $('#produceNo').combobox('getValue'),
+			working = $('#working').combobox('getValue'),
+			dept = $('#dept').combobox('getValue'),
+			startDate = $('#startDate').datebox('getValue'),
+			endDate = $('#endDate').datebox('getValue');
+		
+		if(startDate && !endDate){
+			$.messager.alert("提示", "请选择结束时间");
 			return;
 		}
-		if(!working){
-			$.messager.alert("提示", "请选择工序");
+		
+		if(!startDate && endDate){
+			$.messager.alert("提示", "请选择开始时间");
+			return;
+		}
+		
+		if(startDate > endDate){
+			$.messager.alert("提示", "开始时间不能大于结束时间");
 			return;
 		}
 		var procedureChart = echarts.init(document.getElementById('procedure'));
 		$.get('production/analysisProduction.action', {
 			'plan.comtinueNo':productNo,
-			'plan.working':working
+			'plan.working':working,
+			'plan.department':dept,
+			'plan.startDate':startDate,
+			'plan.endDate':endDate
 		}, function(data){
 			procedureChart.setOption({
 				title : {
-			        text: working + '责任统计',
+			        text: '工序问题统计',
 			        //subtext: '纯属虚构',
 			        x:'center'
 			    },
@@ -46,7 +59,7 @@
 			            name: '工序责任统计',
 			            type: 'pie',
 			            radius: '75%',
-			            center: ['50%', '60%'],
+			            center: ['60%', '55%'],
 			            data:data
 			        }
 			    ]

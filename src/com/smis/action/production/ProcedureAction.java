@@ -19,7 +19,7 @@ public class ProcedureAction extends BaseAction {
 	private IProcedureService procedureService;
 	
 	public void analysis() throws IOException{
-		outJSON(JSONArray.fromObject(procedureService.statisticalAnalysis(plan.getComtinueNo(), plan.getWorking())));
+		outJSON(JSONArray.fromObject(procedureService.statisticalAnalysis(plan)));
 	}
 	
 	public void working() throws IOException{
@@ -28,6 +28,10 @@ public class ProcedureAction extends BaseAction {
 	
 	public void produceNo() throws IOException{
 		outJSON(JSONArray.fromObject(procedureService.findProduceNo()));
+	}
+	
+	public void dept() throws IOException{
+		outJSON(JSONArray.fromObject(procedureService.findDept()));
 	}
 
 	public ProducePlan getPlan() {

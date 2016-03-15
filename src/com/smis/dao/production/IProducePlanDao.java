@@ -7,4 +7,5 @@ import com.smis.model.production.ProducePlan;
 
 public interface IProducePlanDao extends IBaseDao<ProducePlan> {
 	public List findProduceNo();
+	public List findDept();
 }
