@@ -16,6 +16,8 @@ public interface IProcedureService {
 	 */
 	public List<JSONObject> statisticalAnalysis(ProducePlan plan);
 	
+	public List<JSONObject> deptAnalysis(ProducePlan plan);
+	
 	public List<Working> findAllWorking();
 	
 	public List<JSONObject> findProduceNo();

@@ -8,4 +8,6 @@ import com.smis.model.production.ProducePlanPersonnel;
 
 public interface IProcedureDao extends IBaseDao<ProducePlanPersonnel> {
 	public List statisticalAnalysis(ProducePlan plan);
+	
+	public List deptAnalysis(ProducePlan plan);
 }

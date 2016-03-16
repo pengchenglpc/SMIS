@@ -46,5 +46,32 @@ public class ProcedureDaoImpl extends BaseDaoImpl<ProducePlanPersonnel> implemen
 		List list = this.findQueryNoCast(query.toString(), param);
 		return list;
 	}
+
+	@Override
+	public List deptAnalysis(ProducePlan plan) {
+		StringBuilder query = new StringBuilder();
+		Map<String, Object> param = new HashMap<String, Object>();
+		query.append("SELECT count(plan.working), plan.working from ProducePlan plan, ProducePlanPersonnel sonnel where 1=1");
+		query.append(" and plan.productNo=sonnel.productPersonnelNo and sonnel.personnelMemo != '' and plan.comFlag=:comFlag");
+		if(plan != null){
+			if(!StringUtils.isEmpty(plan.getDepartment())){
+				query.append(" and plan.department=:department");
+				param.put("department", plan.getDepartment());
+			}
+			if(!StringUtils.isEmpty(plan.getComtinueNo())){
+				query.append(" and plan.comtinueNo=:comtinueNo");
+				param.put("comtinueNo", plan.getComtinueNo());
+			}
+			if(plan.getStartDate() != null && plan.getEndDate() != null){
+				query.append(" and plan.producePlanDate >=:startDate and plan.producePlanDate <=:endDate");
+				param.put("startDate", plan.getStartDate());
+				param.put("endDate", plan.getEndDate());
+			}
+		}
+		query.append(" group by plan.working");
+		param.put("comFlag", "已审核");
+		List list = this.findQueryNoCast(query.toString(), param);
+		return list;
+	}
 	
 }

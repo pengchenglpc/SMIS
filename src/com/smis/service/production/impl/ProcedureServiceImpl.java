@@ -68,5 +68,20 @@ public class ProcedureServiceImpl implements IProcedureService {
 		}
 		return arr;
 	}
+	@Override
+	public List<JSONObject> deptAnalysis(ProducePlan plan) {
+		List list = procedureDao.deptAnalysis(plan);
+		List<JSONObject> arr = new ArrayList<JSONObject>();
+		for(Object obj : list){
+			Object[] _arr = (Object[])obj;
+			Long value = (Long)_arr[0];
+			String name = (String)_arr[1];
+			JSONObject json = new JSONObject();
+			json.put("value", value);
+			json.put("name", name);
+			arr.add(json);
+		}
+		return arr;
+	}
 
 }

@@ -22,6 +22,10 @@ public class ProcedureAction extends BaseAction {
 		outJSON(JSONArray.fromObject(procedureService.statisticalAnalysis(plan)));
 	}
 	
+	public void deptAnalysis() throws IOException{
+		outJSON(JSONArray.fromObject(procedureService.deptAnalysis(plan)));
+	}
+	
 	public void working() throws IOException{
 		outJSON(JSONArray.fromObject(procedureService.findAllWorking()));
 	}
