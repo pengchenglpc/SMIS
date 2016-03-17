@@ -73,5 +73,19 @@ public class ProcedureDaoImpl extends BaseDaoImpl<ProducePlanPersonnel> implemen
 		List list = this.findQueryNoCast(query.toString(), param);
 		return list;
 	}
+
+	@Override
+	public List dutyCompare(ProducePlan plan) {
+		StringBuilder query = new StringBuilder();
+		Map<String, Object> param = new HashMap<String, Object>();
+		query.append("SELECT count(plan.working), plan.working, d._month from (select MONTH(producePlanDate) _month, YEAR(producePlanDate) _year, productNo from ProducePlan) d, ProducePlan plan, ProducePlanPersonnel sonnel where 1=1 ");
+		query.append(" and d.productNo=plan.productNo and plan.productNo=sonnel.productPersonnelNo and sonnel.personnelMemo != '' and plan.comFlag=:comFlag");
+		query.append(" and d._year=2015");
+		query.append(" group by plan.working, d._month");
+		param.put("comFlag", "已审核");
+		
+		List list = this.findQueryNoCast(query.toString(), param);
+		return list;
+	}
 	
 }

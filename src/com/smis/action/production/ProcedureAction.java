@@ -26,6 +26,9 @@ public class ProcedureAction extends BaseAction {
 		outJSON(JSONArray.fromObject(procedureService.deptAnalysis(plan)));
 	}
 	
+	public void dutyCompare() throws IOException{
+		outJSON(JSONArray.fromObject(procedureService.dutyCompare(plan)));
+	}
 	public void working() throws IOException{
 		outJSON(JSONArray.fromObject(procedureService.findAllWorking()));
 	}

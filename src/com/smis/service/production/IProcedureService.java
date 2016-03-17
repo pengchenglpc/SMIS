@@ -23,4 +23,6 @@ public interface IProcedureService {
 	public List<JSONObject> findProduceNo();
 	
 	public List<JSONObject> findDept();
+	
+	public List<JSONObject> dutyCompare(ProducePlan plan);
 }

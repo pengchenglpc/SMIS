@@ -83,5 +83,22 @@ public class ProcedureServiceImpl implements IProcedureService {
 		}
 		return arr;
 	}
+	@Override
+	public List<JSONObject> dutyCompare(ProducePlan plan) {
+		List list = procedureDao.dutyCompare(plan);
+		List<JSONObject> arr = new ArrayList<JSONObject>();
+		for(Object obj : list){
+			Object[] datas = (Object[])obj;
+			Long value = (Long)datas[0];
+			String name = (String)datas[1];
+			Integer month = (Integer)datas[2];
+			JSONObject json = new JSONObject();
+			json.put("value", value);
+			json.put("name", name);
+			json.put("month", month + "月");
+			arr.add(json);
+		}
+		return arr;
+	}
 
 }

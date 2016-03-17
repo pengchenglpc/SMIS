@@ -1,8 +1,4 @@
 (function($){
-	$(function(){
-		
-		
-	});
 	window.analysis = function(){
 		var productNo = $('#produceNo').combobox('getValue'),
 			working = $('#working').combobox('getValue'),
@@ -65,5 +61,8 @@
 			    ]
 			});
 		}, 'json');
-	}
+	};
+//	$(function(){
+//		analysis();		
+//	});
 })(jQuery);
