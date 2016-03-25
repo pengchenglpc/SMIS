@@ -10,6 +10,7 @@ import com.smis.model.production.ProducePlan;
 import com.smis.service.production.IProcedureService;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @Controller("procedureAction")
 public class ProcedureAction extends BaseAction {
@@ -27,7 +28,7 @@ public class ProcedureAction extends BaseAction {
 	}
 	
 	public void dutyCompare() throws IOException{
-		outJSON(JSONArray.fromObject(procedureService.dutyCompare(plan)));
+		outJSON(JSONObject.fromObject(procedureService.dutyCompare(plan)));
 	}
 	public void working() throws IOException{
 		outJSON(JSONArray.fromObject(procedureService.findAllWorking()));

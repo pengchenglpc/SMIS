@@ -1,7 +1,57 @@
 (function($){
 	$(function(){
-		$.get('production/dutyCompareProduction.action', null, function(data){
-			
+		var year = new Date().getFullYear();
+		var yearData = [];
+		for(var i = 0; i < 10; i++){
+			var _year = year--;
+			yearData.push({
+				name:_year + '年',
+				value:_year
+			});
+		}
+		$('#yearCombo').combobox({data:yearData});
+		
+		
+	});
+	window.dutytAnalysis = function(){
+		var dept = $('#dutyDept').combobox('getValue'),
+			productNo = $('#dutyProduceNo').combobox('getValue'),
+			year = $('#yearCombo').combobox('getValue'),
+			quarter = $('#quarterCombo').combobox('getValue'),
+			way = $('#duty_search_form input[type=radio][name=analysisType]:checked').val();
+		debugger
+		$.get('production/dutyCompareProduction.action', {
+			'plan.comtinueNo':productNo,
+			//'plan.working':working,
+			'plan.department':dept,
+			'plan.year':year,
+			'plan.quarter':quarter,
+			'plan.way':way
+		}, function(data){
+			var _datas = data['data'],
+				series = [];
+			for(var key in _datas){
+				var _data = _datas[key];
+				series.push({
+		            name: key,
+		            type: 'bar',
+		            markLine : {
+		                lineStyle: {
+		                    normal: {
+		                        type: 'dashed'
+		                    }
+		                }
+		            },
+//		            stack: '总量',
+//		            label: {
+//		                normal: {
+//		                    show: true,
+//		                    position: 'insideRight'
+//		                }
+//		            },
+		            data: _data
+		        });
+			}
 			var dutyCompare = echarts.init(document.getElementById('dutyCompare')),
 			option = {
 			    tooltip : {
@@ -11,7 +61,7 @@
 			        }
 			    },
 			    legend: {
-			        data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+			        data: data['technology']
 			    },
 			    grid: {
 			        left: '3%',
@@ -24,73 +74,11 @@
 			    },
 			    xAxis: {
 			        type: 'category',
-			        data: ['周一','周二','周三','周四','周五','周六','周日']
+			        data: data['month']
 			    },
-			    series: [
-			        {
-			            name: '直接访问',
-			            type: 'bar',
-			            stack: '总量',
-			            label: {
-			                normal: {
-			                    show: true,
-			                    position: 'insideRight'
-			                }
-			            },
-			            data: [320, 302, 301, 334, 390, 330, 320]
-			        },
-			        {
-			            name: '邮件营销',
-			            type: 'bar',
-			            stack: '总量',
-			            label: {
-			                normal: {
-			                    show: true,
-			                    position: 'insideRight'
-			                }
-			            },
-			            data: [120, 132, 101, 134, 90, 230, 210]
-			        },
-			        {
-			            name: '联盟广告',
-			            type: 'bar',
-			            stack: '总量',
-			            label: {
-			                normal: {
-			                    show: true,
-			                    position: 'insideRight'
-			                }
-			            },
-			            data: [220, 182, 191, 234, 290, 330, 310]
-			        },
-			        {
-			            name: '视频广告',
-			            type: 'bar',
-			            stack: '总量',
-			            label: {
-			                normal: {
-			                    show: true,
-			                    position: 'insideRight'
-			                }
-			            },
-			            data: [150, 212, 201, 154, 190, 330, 410]
-			        },
-			        {
-			            name: '搜索引擎',
-			            type: 'bar',
-			            stack: '总量',
-			            label: {
-			                normal: {
-			                    show: true,
-			                    position: 'insideRight'
-			                }
-			            },
-			            data: [820, 832, 901, 934, 1290, 1330, 1320]
-			        }
-			    ]
+			    series: series
 			};
 		dutyCompare.setOption(option);
 		}, 'json');
-		
-	});
+	}
 })(jQuery);

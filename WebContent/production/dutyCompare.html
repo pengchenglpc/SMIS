@@ -3,18 +3,18 @@
 
 <div class="easyui-layout" data-options="fit:true,border:false">   
     <div data-options="region:'north',title:'查询',collapsible:true,border:false" style="height:100px;">
-    	<form id="custom_search_form">
+    	<form id="duty_search_form">
 	    	<div style="padding:10px;">
 	    		<div style="margin-left:15px;float:left;width:350px;">
 	    			<label>部门：</label>
-	    			<input id="deptDept" type="text" class="easyui-combobox" data-options="    
+	    			<input id="dutyDept" type="text" class="easyui-combobox" data-options="    
 														        valueField: 'name',    
 														        textField: 'name',    
 														        url: 'production/deptProduction.action'"/>
 	    		</div>
 	    		<div style="float:left;width:340px;">
 	    			<label>生产单：</label>
-	    			<input id="deptProduceNo" type="text" class="easyui-combobox" data-options="    
+	    			<input id="dutyProduceNo" type="text" class="easyui-combobox" data-options="    
 														        valueField: 'name',    
 														        textField: 'name',
 														        filter: function(q, row){
@@ -25,12 +25,28 @@
 	    		</div>
 	    	</div>
 	    	<div style="padding:25px 0px 0px 25px">
-	    		<label>时间：</label>
-	    		<input type="text" id="deptStartDate" class="easyui-datebox" ></input> 至
-	    		<input type="text" id="deptEndDate" class="easyui-datebox" ></input>
-	    		<div style="clear:left;float:right;margin-right:10px;">
-		    		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="deptAnalysis()">统计</a>
-		    	</div>  
+	    		<div style="float:left;width:350px;">
+	    			<label>年度：</label>
+	    			<input id="yearCombo" type="text" class="easyui-combobox" data-options="    
+														        valueField: 'value',    
+														        textField: 'name'"/>
+	    		</div>
+	    		<div style="float:left;width:330px;">
+	    			<label>季&nbsp;度：</label>
+	    			<input id="quarterCombo" type="text" class="easyui-combobox" data-options="    
+														        valueField: 'value',    
+														        textField: 'name',
+														        data:[{name:'一季度',value:'1'},
+														        {name:'二季度',value:'2'},
+														        {name:'三季度',value:'3'},
+														        {name:'四季度',value:'4'}]"/>
+	    		</div>
+	    		<div style="float:left;width:350px;">
+	    			<label>统计类型：</label>
+	    			<input type="radio" name="analysisType" value="0" checked/>工序
+	    			<input type="radio" name="analysisType" value="1"/>问题原因
+	    			<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="dutytAnalysis()">统计</a>
+	    		</div>
 	    	</div>
     	</form>
     	

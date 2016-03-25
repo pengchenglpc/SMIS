@@ -8,9 +8,9 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -153,6 +153,16 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Override
 	public List findQueryNoCast(String querySQL, Map<String, Object> param) {
 		Query query = sessionFactory.getCurrentSession().createQuery(querySQL);
+		if(param != null){
+			for(String key : param.keySet()){
+				query.setParameter(key, param.get(key));
+			}
+		}
+		return query.list();
+	}
+	@Override
+	public List findNativeQuery(String querySQL, Map<String, Object> param) {
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(querySQL);
 		if(param != null){
 			for(String key : param.keySet()){
 				query.setParameter(key, param.get(key));

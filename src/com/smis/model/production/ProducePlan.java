@@ -45,6 +45,9 @@ public class ProducePlan {
 	
 	private Date startDate;
 	private Date endDate;
+	private String year;
+	private String quarter;
+	private Integer way;
 	
 	@Id
 	@Column(name="ProductNo", nullable=false, length=100)
@@ -247,6 +250,28 @@ public class ProducePlan {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	
+	@Transient
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	
+	@Transient
+	public String getQuarter() {
+		return quarter;
+	}
+	public void setQuarter(String quarter) {
+		this.quarter = quarter;
+	}
+	public Integer getWay() {
+		return way;
+	}
+	public void setWay(Integer way) {
+		this.way = way;
 	}
 	
 	

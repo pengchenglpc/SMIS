@@ -1,6 +1,7 @@
 package com.smis.service.production;
 
 import java.util.List;
+import java.util.Map;
 
 import com.smis.model.production.ProducePlan;
 import com.smis.model.production.Working;
@@ -24,5 +25,5 @@ public interface IProcedureService {
 	
 	public List<JSONObject> findDept();
 	
-	public List<JSONObject> dutyCompare(ProducePlan plan);
+	public Map<String, Object> dutyCompare(ProducePlan plan);
 }

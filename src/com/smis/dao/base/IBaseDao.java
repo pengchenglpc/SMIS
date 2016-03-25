@@ -57,4 +57,6 @@ public interface IBaseDao<T> {
 	public Page<T> findAll(Integer page, Integer pageSize);
 	public List findQueryNoCast(String querySQL, Map<String, Object> param);
 	
+	public List findNativeQuery(String querySQL, Map<String, Object> param);
+	
 }
